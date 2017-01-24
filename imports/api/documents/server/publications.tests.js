@@ -1,26 +1,26 @@
-// Tests for the links publications
+// Tests for the documents publications
 //
 // https://guide.meteor.com/testing.html
 
 import { assert } from 'meteor/practicalmeteor:chai';
-import { Links } from '../links.js';
+import { Documents } from '../documents.js';
 import { PublicationCollector } from 'meteor/johanbrook:publication-collector';
 import './publications.js';
 
-describe('links publications', function () {
+describe('documents publications', function () {
   beforeEach(function () {
-    Links.remove({});
-    Links.insert({
+    Documents.remove({});
+    Documents.insert({
       title: 'meteor homepage',
       url: 'https://www.meteor.com',
     });
   });
 
-  describe('links.all', function () {
-    it('sends all links', function (done) {
+  describe('documents.all', function () {
+    it('sends all documents', function (done) {
       const collector = new PublicationCollector();
-      collector.collect('links.all', (collections) => {
-        assert.equal(collections.links.length, 1);
+      collector.collect('documents.all', (collections) => {
+        assert.equal(collections.documents.length, 1);
         done();
       });
     });

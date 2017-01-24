@@ -2,15 +2,13 @@
 
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
-import { Links } from './links.js';
+import { Documents } from './documents.js';
 
 Meteor.methods({
-  'links.insert'(title, url) {
-    check(url, String);
+  'documents.insert'(title, url) {
     check(title, String);
 
-    return Links.insert({
-      url,
+    return Documents.insert({
       title,
       createdAt: new Date(),
     });
